@@ -1,6 +1,6 @@
 # FibonacciTrader
 
-A simple app that takes historical price from CoinAPI, sets TA indicators (SMA, RSI, MACD), and identifies Fibonacci retracement and extension levels.
+A simple app that takes historical price from [CoinAPI](https://docs.coinapi.io/), sets TA indicators (SMA, RSI, MACD) using [TA-Lib](https://ta-lib.org/), and identifies Fibonacci retracement and extension levels.
 
 ## Assumptions
 
