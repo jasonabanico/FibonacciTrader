@@ -14,7 +14,7 @@ A simple app that takes historical price from [CoinAPI](https://docs.coinapi.io/
 ## Features
 
 - Price feed is cached as JSON text files to avoid unnecessary calls to CoinAPI.
-- Technical analysis indicators may be extended to use the extensive function set of TA-Lib.
+- Technical analysis indicators may be extended to use the extensive function set of [TA-Lib](https://ta-lib.org/).
 
 ## Sample Output
 
