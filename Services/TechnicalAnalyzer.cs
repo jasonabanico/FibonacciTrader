@@ -41,9 +41,12 @@ namespace FibonacciTrader.Services
         {
             var prices = new List<decimal>();
             _items.ForEach(i => prices.Add(i.RateClose));
-            var results = Indicators.Macd(prices.ToArray(), fastPeriod, slowPeriod, signalPeriod).Macd;
-            var key = $"Macd{fastPeriod}-{slowPeriod}-{signalPeriod}";
-            UpdateIndicators(key, results.ToArray(), _items);
+            var macd = Indicators.Macd(prices.ToArray(), fastPeriod, slowPeriod, signalPeriod).Macd;
+            var macdKey = $"Macd{fastPeriod}-{slowPeriod}-{signalPeriod}-Macd";
+            UpdateIndicators(macdKey, macd.ToArray(), _items);
+            var signal = Indicators.Macd(prices.ToArray(), fastPeriod, slowPeriod, signalPeriod).Signal;
+            var signalKey = $"Macd{fastPeriod}-{slowPeriod}-{signalPeriod}-Signal";
+            UpdateIndicators(signalKey, signal.ToArray(), _items);
         }
 
         public static void UpdateIndicators(string key, decimal[] results, List<ExchangeRateItem> items)
