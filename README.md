@@ -2,6 +2,12 @@
 
 A simple app that takes historical price from CoinAPI, sets TA indicators (SMA, RSI, MACD), and identifies Fibonacci retracement and extension levels.
 
+# Assumptions
+
+- Cycles occur in every approximately 1400 days, starting from the birth of Bitcoin. (Actual halving cycles do not have a fixed number of days.)
+- Alt coins follow the same cycle.
+- Cycle begins with a bull market upward trend, leading to a peak, followed by a bear market downward retracement, and moving sideways or slightly upwards towards the end of the cycle.
+
 ## Sample Output
 
     ----------
