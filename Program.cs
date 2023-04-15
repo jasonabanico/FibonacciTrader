@@ -18,17 +18,10 @@ namespace FibonacciTrader
                 var itemsFilename = $"{asset}-items.txt";
                 var items = fileWriter.ReadItemsFromFile(itemsFilename);
 
-                var startDate = new DateTime(2015, 1, 1);
-                foreach (var storedItem in items)
-                {
-                    if (storedItem.TimePeriodStart > startDate) startDate = storedItem.TimePeriodStart;
-                }
-
+                var startDate = items.Count > 0 ? items[items.Count - 1].TimePeriodStart : new DateTime(2015, 1, 1);
                 var endDate = DateTime.Today;
                 if ((endDate - startDate).TotalDays > 1)
-                {
                     items = await apiClient.GetPrices(asset, startDate, endDate, items);
-                }
                 fileWriter.WriteItemsToFile(items, itemsFilename);
 
                 var technicalAnalyzer = new TechnicalAnalyzer(items);
