@@ -48,16 +48,22 @@ namespace FibonacciTrader.Services
             {
                 var cycle = item.Cycle;
                 var key = $"{item.asset}-{cycle}";
-                if (!CycleTops.ContainsKey(key))
+
+                // only mark cycle top after the 1st half of the cycle has passed
+                var cycleStart = CycleStarts.Where(cs => cs.Cycle == cycle).FirstOrDefault();
+                if ((DateTime.Today - cycleStart.StartDate).TotalDays > 700)
                 {
-                    CycleTops.Add(key, item);
-                }
-                else
-                {
-                    var rate_close = item.RateClose;
-                    if (rate_close > CycleTops[key].RateClose)
+                    if (!CycleTops.ContainsKey(key))
                     {
-                        CycleTops[key] = item;
+                        CycleTops.Add(key, item);
+                    }
+                    else
+                    {
+                        var rate_close = item.RateClose;
+                        if (rate_close > CycleTops[key].RateClose)
+                        {
+                            CycleTops[key] = item;
+                        }
                     }
                 }
             }
