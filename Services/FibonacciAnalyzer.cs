@@ -206,7 +206,7 @@ namespace FibonacciTrader.Services
                 if (top.Value.RateClose > 0)
                 {
                     var cycle = top.Key.Replace($"{asset}-", "");
-                    writer.AddToLog($"  For cycle {cycle}, top happened on {top.Value.TimePeriodStart.ToShortDateString()} at ${top.Value.RateClose.ToString(decimalFormat)}. [RSI: {top.Value.Metadata["Rsi14"]}] [MACD: {top.Value.Metadata["Macd26-12-9"]}]");
+                    writer.AddToLog($"  For cycle {cycle}, top happened on {top.Value.TimePeriodStart.ToShortDateString()} at ${top.Value.RateClose.ToString(decimalFormat)}. [RSI: {top.Value.Indicators["Rsi14"].ToString(decimalFormat)}] [MACD: {top.Value.Indicators["Macd26-12-9"].ToString(decimalFormat)}]");
                 }
             }
 
@@ -217,7 +217,7 @@ namespace FibonacciTrader.Services
                 if (bottom.Value.RateClose > 0)
                 {
                     var cycle = bottom.Key.Replace($"{asset}-", "");
-                    writer.AddToLog($"  For cycle {cycle}, bottom happened on {bottom.Value.TimePeriodStart.ToShortDateString()} at ${bottom.Value.RateClose.ToString(decimalFormat)}. [RSI: {bottom.Value.Metadata["Rsi14"]}] [MACD: {bottom.Value.Metadata["Macd26-12-9"]}]");
+                    writer.AddToLog($"  For cycle {cycle}, bottom happened on {bottom.Value.TimePeriodStart.ToShortDateString()} at ${bottom.Value.RateClose.ToString(decimalFormat)}. [RSI: {bottom.Value.Indicators["Rsi14"].ToString(decimalFormat)}] [MACD: {bottom.Value.Indicators["Macd26-12-9"].ToString(decimalFormat)}]");
                 }
             }
 
@@ -228,7 +228,7 @@ namespace FibonacciTrader.Services
                 var cycle = retracementCrossingCycles.Key.Replace($"{asset}-", "");
                 writer.AddToLog($"- For cycle {cycle}:");
                 foreach (var retracementCrossing in retracementCrossingCycles.Value)
-                    writer.AddToLog($"  Retracement level {retracementCrossing.FibonacciMarker.Level} of ${retracementCrossing.FibonacciMarker.Value.ToString(decimalFormat)} crossed on {retracementCrossing.ExchangeRateItem.TimePeriodStart.ToShortDateString()} at ${retracementCrossing.ExchangeRateItem.RateClose.ToString(decimalFormat)}. [RSI: {retracementCrossing.ExchangeRateItem.Metadata["Rsi14"]}] [MACD: {retracementCrossing.ExchangeRateItem.Metadata["Macd26-12-9"]}]");
+                    writer.AddToLog($"  Retracement level {retracementCrossing.FibonacciMarker.Level} of ${retracementCrossing.FibonacciMarker.Value.ToString(decimalFormat)} crossed on {retracementCrossing.ExchangeRateItem.TimePeriodStart.ToShortDateString()} at ${retracementCrossing.ExchangeRateItem.RateClose.ToString(decimalFormat)}. [RSI: {retracementCrossing.ExchangeRateItem.Indicators["Rsi14"].ToString(decimalFormat)}] [MACD: {retracementCrossing.ExchangeRateItem.Indicators["Macd26-12-9"].ToString(decimalFormat)}]");
             }
 
             writer.AddToLog("\nCycle Extension Crossings:");
@@ -240,7 +240,7 @@ namespace FibonacciTrader.Services
                 lastCycle = extensionCrossingCycles.Key;
                 writer.AddToLog($"- For cycle {cycle}:");
                 foreach (var extensionCrossing in extensionCrossingCycles.Value)
-                    writer.AddToLog($"  Extension level {extensionCrossing.FibonacciMarker.Level} of ${extensionCrossing.FibonacciMarker.Value.ToString(decimalFormat)} crossed on {extensionCrossing.ExchangeRateItem.TimePeriodStart.ToShortDateString()} at ${extensionCrossing.ExchangeRateItem.RateClose.ToString(decimalFormat)}. [RSI: {extensionCrossing.ExchangeRateItem.Metadata["Rsi14"]}] [MACD: {extensionCrossing.ExchangeRateItem.Metadata["Macd26-12-9"]}]");
+                    writer.AddToLog($"  Extension level {extensionCrossing.FibonacciMarker.Level} of ${extensionCrossing.FibonacciMarker.Value.ToString(decimalFormat)} crossed on {extensionCrossing.ExchangeRateItem.TimePeriodStart.ToShortDateString()} at ${extensionCrossing.ExchangeRateItem.RateClose.ToString(decimalFormat)}. [RSI: {extensionCrossing.ExchangeRateItem.Indicators["Rsi14"].ToString(decimalFormat)}] [MACD: {extensionCrossing.ExchangeRateItem.Indicators["Macd26-12-9"].ToString(decimalFormat)}]");
             }
 
             writer.AddToLog("\nNext Cycle Extensions:");

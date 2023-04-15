@@ -31,6 +31,6 @@ namespace FibonacciTrader.Models
         public decimal RateClose { get; set; }
 
         public int Cycle { get; set; }
-        public Dictionary<string, string> Metadata { get; set; } = new Dictionary<string, string>();
+        public Dictionary<string, decimal> Indicators { get; set; } = new Dictionary<string, decimal>();
     }
 }

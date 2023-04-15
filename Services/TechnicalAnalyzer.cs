@@ -52,18 +52,17 @@ namespace FibonacciTrader.Services
 
         public static void UpdateItemMetadata(string key, decimal[] results, List<ExchangeRateItem> items)
         {
-            var indicatorFormat = "###0.0#";
             var starting = items.Count - results.Length;
             for (int i = 0; i < results.Count(); i++)
             {
                 var index = starting + i;
-                var metadata = items[index].Metadata;
-                if (metadata == null) metadata = new Dictionary<string, string>();
+                var indicators = items[index].Indicators;
+                if (indicators == null) indicators = new Dictionary<string, decimal>();
 
-                if (!metadata.ContainsKey(key)) metadata.Add(key, results[i].ToString(indicatorFormat));
-                else metadata[key] = results[i].ToString(indicatorFormat);
+                if (!indicators.ContainsKey(key)) indicators.Add(key, results[i]);
+                else indicators[key] = results[i];
 
-                items[index].Metadata = metadata;
+                items[index].Indicators = indicators;
             }
         }
     }
