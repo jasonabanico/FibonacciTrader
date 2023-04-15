@@ -5,7 +5,7 @@ A simple app that takes historical price from CoinAPI, sets TA indicators (SMA, 
 ## Assumptions
 
 - For simplicity, cycles are approximated to happen every 1400 days, starting from the birth of Bitcoin. (Actual halving cycles do not have a fixed number of days.)
-- Alt coins follow the same cycle.
+- Alt coins follow the same cycle (following the "crypto money flow" cycle.)
 - Cycle begins with a bull market upward trend, leading to a peak, followed by a bear market downward retracement, and moving sideways or slightly upwards towards the end of the cycle, following a pattern similar to the Wall Street Cheat Sheet.
 
 ![Wall Street Cheat Sheet](https://i.pinimg.com/736x/32/c7/39/32c739ad0296dcb687a34de1df8f9f03.jpg)
