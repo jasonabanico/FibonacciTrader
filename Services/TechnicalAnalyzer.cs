@@ -25,7 +25,7 @@ namespace FibonacciTrader.Services
             _items.ForEach(i => prices.Add(i.RateClose));
             var results = Indicators.Sma(prices.ToArray(), period).Ma;
             var key = $"Sma{period}";
-            UpdateItemMetadata(key, results, _items);
+            UpdateIndicators(key, results, _items);
         }
 
         public void Rsi(int period)
@@ -34,7 +34,7 @@ namespace FibonacciTrader.Services
             _items.ForEach(i => prices.Add(i.RateClose));
             var results = Indicators.Rsi(prices.ToArray(), period).Rsi;
             var key = $"Rsi{period}";
-            UpdateItemMetadata(key, results, _items);
+            UpdateIndicators(key, results, _items);
         }
 
         public void Macd(int fastPeriod, int slowPeriod, int signalPeriod)
@@ -47,10 +47,10 @@ namespace FibonacciTrader.Services
             for (int i = 0; i < macd.Length - 1; i++)
                 results.Add(macd[i] - signal[i]);
             var key = $"Macd{fastPeriod}-{slowPeriod}-{signalPeriod}";
-            UpdateItemMetadata(key, results.ToArray(), _items);
+            UpdateIndicators(key, results.ToArray(), _items);
         }
 
-        public static void UpdateItemMetadata(string key, decimal[] results, List<ExchangeRateItem> items)
+        public static void UpdateIndicators(string key, decimal[] results, List<ExchangeRateItem> items)
         {
             var starting = items.Count - results.Length;
             for (int i = 0; i < results.Count(); i++)
