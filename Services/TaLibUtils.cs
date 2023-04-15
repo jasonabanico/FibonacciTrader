@@ -12,7 +12,7 @@ namespace FibonacciTrader.Services
             _items = items;
         }
 
-        public void AnnotateTechnicalAnalysis()
+        public void Analayze()
         {
             Sma(200);
             Rsi(14);

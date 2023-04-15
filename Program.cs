@@ -25,7 +25,7 @@ namespace FibonacciTrader
                 fileWriter.WriteItemsToFile(items, itemsFilename);
 
                 var technicalAnalyzer = new TechnicalAnalyzer(items);
-                technicalAnalyzer.AnnotateTechnicalAnalysis();
+                technicalAnalyzer.Analayze();
                 fibonacciAnalyzer.Analyze(asset, items, filePath);
             }
         }
