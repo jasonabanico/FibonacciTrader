@@ -11,7 +11,19 @@ A simple app that takes historical price from [CoinAPI](https://docs.coinapi.io/
 
 ![Wall Street Cheat Sheet](https://i.pinimg.com/736x/32/c7/39/32c739ad0296dcb687a34de1df8f9f03.jpg)
 
-## Features
+## Process
+
+- Retrieve price history from CoinAPI or from local file.
+- Annotate each price with technical indicators (SMA, RSI, MACD).
+- Calculate the start dates of each cycle.
+- For each price point, mark the cycle.
+- Identify the cycle tops (highest price) and bottoms (lowest price).
+- Calculate the retracement and extension levels for each cycle.
+  - Retracement: Multiply the upward length (current cycle top minus previous cycle bottom) with Fibonacci levels, and subtract it from the current cycle top.
+  - Extension: Multiply the downward length (current cycle top minus current cycle bottom) with Fibonacci levels, and add it to the current cycle bottom.
+- Identify when retention and extension crossing occurred for each cycle.
+
+## Additional Features
 
 - Price feed is cached as JSON text files to avoid unnecessary calls to CoinAPI.
 - Technical analysis indicators may be extended to use the extensive function set of [TA-Lib](https://ta-lib.org/).
