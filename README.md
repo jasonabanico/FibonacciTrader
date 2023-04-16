@@ -15,8 +15,7 @@ A simple app that takes historical price from [CoinAPI](https://docs.coinapi.io/
 
 - Retrieve price history from CoinAPI or from local file.
 - Annotate each price with technical indicators (SMA, RSI, MACD).
-- Calculate the start dates of each cycle.
-- For each price point, mark the cycle.
+- Calculate the start dates of each cycle, and, for each price point, mark the cycle.
 - Identify the cycle tops (highest price) and bottoms (lowest price).
 - Calculate the retracement and extension levels for each cycle.
   - Retracement: Multiply the upward length (current cycle top minus previous cycle bottom) with Fibonacci levels, and subtract it from the current cycle top.
