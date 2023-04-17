@@ -24,7 +24,7 @@ A simple app that takes historical price from [CoinAPI](https://docs.coinapi.io/
 
 ## Strategy (not financial advice)
 
-- Use history to determine retracement level to buy and extension level to sell.
+- Use history to determine the extension level to sell and the retracement level to buy again.
 
 ## Additional Features
 
