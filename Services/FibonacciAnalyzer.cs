@@ -150,6 +150,19 @@ namespace FibonacciTrader.Services
             }
         }
 
+        private List<FibonacciMarker> CalculateFutureRetracements(
+            decimal previousBottom, FibonacciMarker extension) 
+        {
+            var extensionSwing = extension.Value - previousBottom;
+            var retracements = new List<FibonacciMarker>();
+            foreach (var retracementLevel in RetracementLevels)
+            {
+                var value = extensionSwing - ((extension.Value - previousBottom) * retracementLevel);
+                if (value > 0) retracements.Add(new FibonacciMarker(retracementLevel, value));
+            }
+            return retracements;
+        }
+
         public void MarkCrossings(string asset, List<ExchangeRateItem> items)
         {
             foreach (var item in items)
@@ -271,7 +284,12 @@ namespace FibonacciTrader.Services
 
             writer.AddToLog("\nNext Cycle Extensions:");
             foreach (var extension in Extensions[lastCycle])
+            {
                 writer.AddToLog($"  Extension level {extension.Level} is ${extension.Value.ToString(decimalFormat)}.");
+                var futureRetracements = CalculateFutureRetracements(CycleBottoms[lastCycle].RateClose, extension);
+                foreach (var retracement in futureRetracements)
+                    writer.AddToLog($"    Retracement level {retracement.Level} is ${retracement.Value.ToString(decimalFormat)}.");
+            }
 
             writer.WriteToLog($"{asset}.txt");
         }
