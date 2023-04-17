@@ -22,6 +22,10 @@ A simple app that takes historical price from [CoinAPI](https://docs.coinapi.io/
   - Extension: Multiply the downward length (current cycle top minus current cycle bottom) with Fibonacci levels, and add it to the current cycle bottom.
 - Identify when retention and extension crossing occurred for each cycle.
 
+## Strategy (not financial advice)
+
+- Use history to determine retracement level to buy and extension level to sell.
+
 ## Additional Features
 
 - Price feed is cached as JSON text files to avoid unnecessary calls to CoinAPI.
