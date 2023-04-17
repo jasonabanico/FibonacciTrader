@@ -150,19 +150,6 @@ namespace FibonacciTrader.Services
             }
         }
 
-        private List<FibonacciMarker> CalculateFutureRetracements(
-            decimal previousBottom, FibonacciMarker extension) 
-        {
-            var extensionSwing = extension.Value - previousBottom;
-            var retracements = new List<FibonacciMarker>();
-            foreach (var retracementLevel in RetracementLevels)
-            {
-                var value = extensionSwing - ((extension.Value - previousBottom) * retracementLevel);
-                if (value > 0) retracements.Add(new FibonacciMarker(retracementLevel, value));
-            }
-            return retracements;
-        }
-
         public void MarkCrossings(string asset, List<ExchangeRateItem> items)
         {
             foreach (var item in items)
@@ -218,6 +205,8 @@ namespace FibonacciTrader.Services
             writer.AddToLog($"{asset} REPORT");
             writer.AddToLog("----------");
 
+            writer.AddToLog("\nNote: Cycle 1 is 2015 because that's the earliest record in CoinApi.");
+
             writer.AddToLog("\nCycle Tops:");
             var cycleTops = CycleTops.Where(ct => ct.Key.StartsWith(asset));
             foreach (var top in cycleTops)
@@ -225,7 +214,7 @@ namespace FibonacciTrader.Services
                 if (top.Value.RateClose > 0)
                 {
                     var cycle = top.Key.Replace($"{asset}-", "");
-                    writer.AddToLog($"  For cycle {cycle}, top happened on {top.Value.TimePeriodStart.ToShortDateString()} " +
+                    writer.AddToLog($"  For cycle {CycleString(cycle)}, top happened on {top.Value.TimePeriodStart.ToShortDateString()} " +
                         $"at ${top.Value.RateClose.ToString(decimalFormat)}. " +
                         $"[RSI: {top.Value.Indicators["Rsi14"].ToString(decimalFormat)}] " +
                         $"[MACD: {top.Value.Indicators["Macd26-12-9-Macd"].ToString(decimalFormat)} " +
@@ -240,7 +229,7 @@ namespace FibonacciTrader.Services
                 if (bottom.Value.RateClose > 0)
                 {
                     var cycle = bottom.Key.Replace($"{asset}-", "");
-                    writer.AddToLog($"  For cycle {cycle}, bottom happened on {bottom.Value.TimePeriodStart.ToShortDateString()} " +
+                    writer.AddToLog($"  For cycle {CycleString(cycle)}, bottom happened on {bottom.Value.TimePeriodStart.ToShortDateString()} " +
                         $"at ${bottom.Value.RateClose.ToString(decimalFormat)}. " +
                         $"[RSI: {bottom.Value.Indicators["Rsi14"].ToString(decimalFormat)}] " +
                         $"[MACD: {bottom.Value.Indicators["Macd26-12-9-Macd"].ToString(decimalFormat)} " +
@@ -253,7 +242,7 @@ namespace FibonacciTrader.Services
             foreach (var retracementCrossingCycles in retracementCrossings)
             {
                 var cycle = retracementCrossingCycles.Key.Replace($"{asset}-", "");
-                writer.AddToLog($"- For cycle {cycle}:");
+                writer.AddToLog($"- For cycle {CycleString(cycle)}:");
                 foreach (var retracementCrossing in retracementCrossingCycles.Value)
                     writer.AddToLog($"  Retracement level {retracementCrossing.FibonacciMarker.Level} of " +
                         $"${retracementCrossing.FibonacciMarker.Value.ToString(decimalFormat)} crossed on " +
@@ -271,7 +260,7 @@ namespace FibonacciTrader.Services
             {
                 var cycle = extensionCrossingCycles.Key.Replace($"{asset}-", "");
                 lastCycle = extensionCrossingCycles.Key;
-                writer.AddToLog($"- For cycle {cycle}:");
+                writer.AddToLog($"- For cycle {CycleString(cycle)}:");
                 foreach (var extensionCrossing in extensionCrossingCycles.Value)
                     writer.AddToLog($"  Extension level {extensionCrossing.FibonacciMarker.Level} of " +
                         $"${extensionCrossing.FibonacciMarker.Value.ToString(decimalFormat)} crossed on " +
@@ -292,6 +281,25 @@ namespace FibonacciTrader.Services
             }
 
             writer.WriteToLog($"{asset}.txt");
+        }
+
+        private string CycleString(string cycle)
+        {
+            var year = CycleStarts.Where(cs => cs.Cycle == int.Parse(cycle)).FirstOrDefault().StartDate.Year;
+            return $"{cycle} ({year})";
+        }
+
+        private List<FibonacciMarker> CalculateFutureRetracements(
+            decimal previousBottom, FibonacciMarker extension)
+        {
+            var extensionSwing = extension.Value - previousBottom;
+            var retracements = new List<FibonacciMarker>();
+            foreach (var retracementLevel in RetracementLevels)
+            {
+                var value = extensionSwing - ((extension.Value - previousBottom) * retracementLevel);
+                if (value > 0) retracements.Add(new FibonacciMarker(retracementLevel, value));
+            }
+            return retracements;
         }
     }
 }
