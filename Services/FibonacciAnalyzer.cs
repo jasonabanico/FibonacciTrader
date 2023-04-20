@@ -97,12 +97,12 @@ namespace FibonacciTrader.Services
 
         public static readonly List<decimal> RetracementLevels = new List<decimal>()
         {
-            0.236m, 0.382m, 0.5m, 0.618m, 0.786m
+            0.236m, 0.382m, 0.5m, 0.618m, 0.786m, 1m
         };
 
         public static readonly List<decimal> ExtensionLevels = new List<decimal>()
         {
-            1.618m, 2.618m, 4.236m, 6.854m
+            0.618m, 1.618m, 2.618m, 4.236m, 6.854m
         };
 
         public void CalculateRetracements(string asset)
@@ -172,7 +172,9 @@ namespace FibonacciTrader.Services
                             {
                                 if (!ExtensionCrossings.ContainsKey(cycleKey))
                                     ExtensionCrossings[cycleKey] = new List<CrossingMarker>();
-                                extensionCrossingMarker = new CrossingMarker(item, extensions[i]);
+                                var previousCycleBottom = CycleBottoms[previousCycleKey];
+                                var days = (item.TimePeriodStart - previousCycleBottom.TimePeriodStart).Days;
+                                extensionCrossingMarker = new CrossingMarker(item, extensions[i], days);
                             }
                         }
                         if (extensionCrossingMarker != null) ExtensionCrossings[cycleKey].Add(extensionCrossingMarker);
@@ -188,7 +190,9 @@ namespace FibonacciTrader.Services
                             {
                                 if (!RetracementCrossings.ContainsKey(cycleKey))
                                     RetracementCrossings[cycleKey] = new List<CrossingMarker>();
-                                retracementCrossingMarker = new CrossingMarker(item, retracements[i]);
+                                var cycleTop = CycleTops[cycleKey];
+                                var days = (item.TimePeriodStart - cycleTop.TimePeriodStart).Days;
+                                retracementCrossingMarker = new CrossingMarker(item, retracements[i], days);
                             }
                         }
                         if (retracementCrossingMarker != null)
@@ -246,7 +250,8 @@ namespace FibonacciTrader.Services
                 foreach (var retracementCrossing in retracementCrossingCycles.Value)
                     writer.AddToLog($"  Retracement level {retracementCrossing.FibonacciMarker.Level} of " +
                         $"${retracementCrossing.FibonacciMarker.Value.ToString(decimalFormat)} crossed on " +
-                        $"{retracementCrossing.ExchangeRateItem.TimePeriodStart.ToShortDateString()} at " +
+                        $"{retracementCrossing.ExchangeRateItem.TimePeriodStart.ToShortDateString()} " +
+                        $"[{retracementCrossing.Days} days from top] at " +
                         $"${retracementCrossing.ExchangeRateItem.RateClose.ToString(decimalFormat)}. " +
                         $"[RSI: {retracementCrossing.ExchangeRateItem.Indicators["Rsi14"].ToString(decimalFormat)}] " +
                         $"[MACD: {retracementCrossing.ExchangeRateItem.Indicators["Macd26-12-9-Macd"].ToString(decimalFormat)} " +
@@ -264,7 +269,8 @@ namespace FibonacciTrader.Services
                 foreach (var extensionCrossing in extensionCrossingCycles.Value)
                     writer.AddToLog($"  Extension level {extensionCrossing.FibonacciMarker.Level} of " +
                         $"${extensionCrossing.FibonacciMarker.Value.ToString(decimalFormat)} crossed on " +
-                        $"{extensionCrossing.ExchangeRateItem.TimePeriodStart.ToShortDateString()} at " +
+                        $"{extensionCrossing.ExchangeRateItem.TimePeriodStart.ToShortDateString()} " +
+                        $"[{extensionCrossing.Days} days from bottom] at " +
                         $"${extensionCrossing.ExchangeRateItem.RateClose.ToString(decimalFormat)}. " +
                         $"[RSI: {extensionCrossing.ExchangeRateItem.Indicators["Rsi14"].ToString(decimalFormat)}] " +
                         $"[MACD: {extensionCrossing.ExchangeRateItem.Indicators["Macd26-12-9-Macd"].ToString(decimalFormat)} " +
