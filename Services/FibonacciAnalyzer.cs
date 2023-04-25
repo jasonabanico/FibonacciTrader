@@ -102,7 +102,7 @@ namespace FibonacciTrader.Services
 
         public static readonly List<decimal> ExtensionLevels = new List<decimal>()
         {
-            0.618m, 1.618m, 2.618m, 4.236m, 6.854m
+            1.236m, 1.382m, 1.500m, 1.618m, 2.618m, 4.236m
         };
 
         public void CalculateRetracements(string asset)
@@ -113,16 +113,16 @@ namespace FibonacciTrader.Services
                 var values = new List<double>();
                 var cycle = int.Parse(tops.Key.Replace($"{asset}-", ""));
                 var previousCycle = cycle - 1;
-                var previousCycleKey = $"{asset}-{previousCycle}";
-                if (CycleBottoms.ContainsKey(previousCycleKey))
+                if (previousCycle > 0)
                 {
-                    var previousBottom = CycleBottoms[previousCycleKey].RateClose;
-                    var currentTop = tops.Value.RateClose;
+                    var previousCycleKey = $"{asset}-{previousCycle}";
+                    var swingLow = CycleBottoms[previousCycleKey].RateClose;
+                    var swingHigh = tops.Value.RateClose;
                     var retracements = new List<FibonacciMarker>();
                     foreach (var retracementLevel in RetracementLevels)
                     {
-                        var value = currentTop - ((currentTop - previousBottom) * retracementLevel);
-                        if (value > 0) retracements.Add(new FibonacciMarker(retracementLevel, value));
+                        var retracement = swingHigh - ((swingHigh - swingLow) * retracementLevel);
+                        if (retracement > 0) retracements.Add(new FibonacciMarker(retracementLevel, retracement));
                     }
 
                     Retracements.Add(tops.Key, retracements);
@@ -135,18 +135,24 @@ namespace FibonacciTrader.Services
             var cycleTops = CycleTops.Where(ct => ct.Key.StartsWith(asset));
             foreach (var tops in cycleTops)
             {
-                var currentTop = tops.Value.RateClose;
-                var currentBottom = CycleBottoms[tops.Key].RateClose;
-                var retracement = currentTop - currentBottom;
-
-                var extensions = new List<FibonacciMarker>();
-                foreach (var extensionLevel in ExtensionLevels)
+                var cycle = int.Parse(tops.Key.Replace($"{asset}-", ""));
+                var previousCycle = cycle - 1;
+                var previousCycleKey = $"{asset}-{previousCycle}";
+                if (CycleBottoms.ContainsKey(previousCycleKey))
                 {
-                    var value = currentBottom + (extensionLevel * retracement);
-                    if (value > 0) extensions.Add(new FibonacciMarker(extensionLevel, value));
-                }
+                    var swingLow = CycleBottoms[previousCycleKey].RateClose;
+                    var swingHigh = tops.Value.RateClose;
+                    var retracement = CycleBottoms[tops.Key].RateClose;
 
-                Extensions.Add(tops.Key, extensions);
+                    var extensions = new List<FibonacciMarker>();
+                    foreach (var extensionLevel in ExtensionLevels)
+                    {
+                        var extension = retracement + ((swingHigh - swingLow) * extensionLevel);
+                        if (extension > 0) extensions.Add(new FibonacciMarker(extensionLevel, extension));
+                    }
+
+                    Extensions.Add(tops.Key, extensions);
+                }
             }
         }
 
@@ -278,12 +284,15 @@ namespace FibonacciTrader.Services
             }
 
             writer.AddToLog("\nNext Cycle Extensions:");
-            foreach (var extension in Extensions[lastCycle])
+            if (Extensions.ContainsKey(lastCycle))
             {
-                writer.AddToLog($"  Extension level {extension.Level} is ${extension.Value.ToString(decimalFormat)}.");
-                var futureRetracements = CalculateFutureRetracements(CycleBottoms[lastCycle].RateClose, extension);
-                foreach (var retracement in futureRetracements)
-                    writer.AddToLog($"    Retracement level {retracement.Level} is ${retracement.Value.ToString(decimalFormat)}.");
+                foreach (var extension in Extensions[lastCycle])
+                {
+                    writer.AddToLog($"  Extension level {extension.Level} is ${extension.Value.ToString(decimalFormat)}.");
+                    var futureRetracements = CalculateFutureRetracements(CycleBottoms[lastCycle].RateClose, extension);
+                    foreach (var retracement in futureRetracements)
+                        writer.AddToLog($"    Retracement level {retracement.Level} is ${retracement.Value.ToString(decimalFormat)}.");
+                }
             }
 
             writer.WriteToLog($"{asset}.txt");
@@ -298,11 +307,10 @@ namespace FibonacciTrader.Services
         private List<FibonacciMarker> CalculateFutureRetracements(
             decimal previousBottom, FibonacciMarker extension)
         {
-            var extensionSwing = extension.Value - previousBottom;
             var retracements = new List<FibonacciMarker>();
             foreach (var retracementLevel in RetracementLevels)
             {
-                var value = extensionSwing - ((extension.Value - previousBottom) * retracementLevel);
+                var value = extension.Value - ((extension.Value - previousBottom) * retracementLevel);
                 if (value > 0) retracements.Add(new FibonacciMarker(retracementLevel, value));
             }
             return retracements;
