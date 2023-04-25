@@ -54,51 +54,61 @@ A simple app that takes historical price from [CoinAPI](https://docs.coinapi.io/
       For cycle 3 (2020), bottom happened on 21/11/2022 at $15,761.98. [RSI: 31.44] [MACD: -948.59 / Signal: -806.70]
 
     Cycle Retracement Crossings:
-    - For cycle 2 (2016):
-      Retracement level 0.236 of $15,036.31 crossed on 22/12/2017 at $14,114.53. [RSI: 47.82] [MACD: 1,608.75 / Signal: 2,117.96]
-      Retracement level 0.382 of $12,265.49 crossed on 16/01/2018 at $11,500.91. [RSI: 36.83] [MACD: -413.18 / Signal: -42.57]
-      Retracement level 0.5 of $10,026.06 crossed on 30/01/2018 at $9,974.18. [RSI: 35.65] [MACD: -895.85 / Signal: -843.27]
-      Retracement level 0.618 of $7,786.63 crossed on 5/02/2018 at $6,893.69. [RSI: 26.29] [MACD: -1,382.95 / Signal: -1,099.39]
-      Retracement level 0.786 of $4,598.28 crossed on 20/11/2018 at $4,377.63. [RSI: 9.78] [MACD: -376.73 / Signal: -200.03]
     - For cycle 3 (2020):
-      Retracement level 0.236 of $51,888.74 crossed on 4/12/2021 at $49,236.52. [RSI: 31.34] [MACD: -1,903.86 / Signal: -1,271.70]
-      Retracement level 0.382 of $42,581.35 crossed on 7/01/2022 at $41,546.33. [RSI: 29.06] [MACD: -1,983.28 / Signal: -1,546.11]
-      Retracement level 0.5 of $35,058.94 crossed on 22/01/2022 at $35,055.92. [RSI: 20.33] [MACD: -2,402.69 / Signal: -1,919.02]
-      Retracement level 0.618 of $27,536.54 crossed on 12/06/2022 at $26,645.56. [RSI: 33.38] [MACD: -899.48 / Signal: -804.93]
-      Retracement level 0.786 of $16,826.67 crossed on 9/11/2022 at $15,864.00. [RSI: 24.35] [MACD: -208.75 / Signal: 166.97]
+      Retracement level 0.236 of $51,888.74 crossed on 4/12/2021 [25 days from top] at $49,236.52. [RSI: 31.34] [MACD: -1,903.86 / Signal: -1,271.70]
+      Retracement level 0.382 of $42,581.35 crossed on 7/01/2022 [59 days from top] at $41,546.33. [RSI: 29.06] [MACD: -1,983.28 / Signal: -1,546.11]
+      Retracement level 0.5 of $35,058.94 crossed on 22/01/2022 [74 days from top] at $35,055.92. [RSI: 20.33] [MACD: -2,402.69 / Signal: -1,919.02]
+      Retracement level 0.618 of $27,536.54 crossed on 12/06/2022 [215 days from top] at $26,645.56. [RSI: 33.38] [MACD: -899.48 / Signal: -804.93]
+      Retracement level 0.786 of $16,826.67 crossed on 9/11/2022 [365 days from top] at $15,864.00. [RSI: 24.35] [MACD: -208.75 / Signal: 166.97]
 
     Cycle Extension Crossings:
-    - For cycle 2 (2016):
-      Extension level 1.618 of $909.46 crossed on 23/12/2016 at $915.93. [RSI: 90.49] [MACD: 29.86 / Signal: 19.21]
-      Extension level 2.618 of $1,139.68 crossed on 23/02/2017 at $1,179.87. [RSI: 79.28] [MACD: 46.56 / Signal: 35.38]
-      Extension level 4.236 of $1,512.20 crossed on 3/05/2017 at $1,518.54. [RSI: 87.52] [MACD: 77.94 / Signal: 56.30]
-      Extension level 6.854 of $2,114.94 crossed on 23/05/2017 at $2,260.28. [RSI: 85.39] [MACD: 188.19 / Signal: 156.36]
     - For cycle 3 (2020):
-      Extension level 1.618 of $29,607.63 crossed on 2/01/2021 at $32,213.11. [RSI: 86.82] [MACD: 2,795.14 / Signal: 2,222.16]
-      Extension level 2.618 of $45,938.47 crossed on 8/02/2021 at $46,489.79. [RSI: 74.84] [MACD: 2,180.15 / Signal: 1,243.62]
+      Extension level 1.236 of $26,641.42 crossed on 28/12/2020 [744 days from bottom] at $27,040.26. [RSI: 77.50] [MACD: 2,027.36 / Signal: 1,644.96]
+      Extension level 1.500 of $31,651.68 crossed on 2/01/2021 [749 days from bottom] at $32,213.11. [RSI: 86.82] [MACD: 2,795.14 / Signal: 2,222.16]
+      Extension level 1.382 of $29,412.24 crossed on 3/01/2021 [750 days from bottom] at $32,970.09. [RSI: 87.70] [MACD: 3,037.52 / Signal: 2,385.23]
+      Extension level 1.618 of $33,891.11 crossed on 5/01/2021 [752 days from bottom] at $33,999.32. [RSI: 83.55] [MACD: 3,302.12 / Signal: 2,685.79]
+      Extension level 2.618 of $52,869.34 crossed on 19/02/2021 [797 days from bottom] at $55,932.11. [RSI: 78.51] [MACD: 4,753.91 / Signal: 3,893.18]
 
     Next Cycle Extensions:
-      Extension level 1.618 is $98,557.59.
-        Retracement level 0.236 is $63,255.84.
-        Retracement level 0.382 is $51,167.68.
-        Retracement level 0.5 is $41,397.80.
-        Retracement level 0.618 is $31,627.92.
-        Retracement level 0.786 is $17,718.26.
-      Extension level 2.618 is $149,729.16.
-        Retracement level 0.236 is $102,350.93.
-        Retracement level 0.382 is $82,791.72.
-        Retracement level 0.5 is $66,983.59.
-        Retracement level 0.618 is $51,175.46.
-        Retracement level 0.786 is $28,668.98.
-      Extension level 4.236 is $232,524.77.
-        Retracement level 0.236 is $165,606.77.
-        Retracement level 0.382 is $133,959.40.
-        Retracement level 0.5 is $108,381.39.
-        Retracement level 0.618 is $82,803.38.
-        Retracement level 0.786 is $46,387.24.
-      Extension level 6.854 is $366,491.95.
-        Retracement level 0.236 is $267,957.70.
-        Retracement level 0.382 is $216,751.12.
-        Retracement level 0.5 is $175,364.98.
-        Retracement level 0.618 is $133,978.85.
-        Retracement level 0.786 is $75,056.21.
+      Extension level 1.236 is $94,556.02.
+        Retracement level 0.236 is $75,960.63.
+        Retracement level 0.382 is $64,456.70.
+        Retracement level 0.5 is $55,159.00.
+        Retracement level 0.618 is $45,861.31.
+        Retracement level 0.786 is $32,623.91.
+        Retracement level 1 is $15,761.98.
+      Extension level 1.382 is $103,863.41.
+        Retracement level 0.236 is $83,071.47.
+        Retracement level 0.382 is $70,208.66.
+        Retracement level 0.5 is $59,812.70.
+        Retracement level 0.618 is $49,416.73.
+        Retracement level 0.786 is $34,615.69.
+        Retracement level 1 is $15,761.98.
+      Extension level 1.500 is $111,385.82.
+        Retracement level 0.236 is $88,818.59.
+        Retracement level 0.382 is $74,857.51.
+        Retracement level 0.5 is $63,573.90.
+        Retracement level 0.618 is $52,290.29.
+        Retracement level 0.786 is $36,225.48.
+        Retracement level 1 is $15,761.98.
+      Extension level 1.618 is $118,908.23.
+        Retracement level 0.236 is $94,565.71.
+        Retracement level 0.382 is $79,506.36.
+        Retracement level 0.5 is $67,335.10.
+        Retracement level 0.618 is $55,163.85.
+        Retracement level 0.786 is $37,835.28.
+        Retracement level 1 is $15,761.98.
+      Extension level 2.618 is $182,657.45.
+        Retracement level 0.236 is $143,270.12.
+        Retracement level 0.382 is $118,903.38.
+        Retracement level 0.5 is $99,209.72.
+        Retracement level 0.618 is $79,516.05.
+        Retracement level 0.786 is $51,477.61.
+        Retracement level 1 is $15,761.98.
+      Extension level 4.236 is $285,803.70.
+        Retracement level 0.236 is $222,073.85.
+        Retracement level 0.382 is $182,647.76.
+        Retracement level 0.5 is $150,782.84.
+        Retracement level 0.618 is $118,917.92.
+        Retracement level 0.786 is $73,550.91.
+        Retracement level 1 is $15,761.98.
