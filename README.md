@@ -4,7 +4,7 @@ A simple app that takes historical price from [CoinAPI](https://docs.coinapi.io/
 
 ## Assumptions
 
-- For simplicity, cycles are approximated to happen every 1400 days, starting from the birth of Bitcoin. This is the [Bitcoin halving](https://www.investopedia.com/bitcoin-halving-4843769) cycle. (Actual halving cycles do not have a fixed number of days.)
+- For simplicity, cycles are approximated to happen every 1400 days, starting from the birth of Bitcoin. This is the [Bitcoin halving](https://www.investopedia.com/bitcoin-halving-4843769) cycle. (Actual halving cycles do not have a fixed number of days.) It may also be possible that the crypto 4-year cycle is in sync with a 4-year liquidity cycle, starting with the Fed's bailout during the GFC in October, 2008.
 - Alt coins follow Bitcoin's cycle, driven by the [Crypto Money Flow Cycle](https://rektcapital.substack.com/p/crypto-money-flow-cycle).
 - For blue-chip high caps, the cycle begins with a bull market upward trend, leading to a peak, followed by a bear market downward retracement, and moving sideways or slightly upwards towards the end of the cycle, following a pattern similar to the Wall Street Cheat Sheet below.
 - Cycle tops will only be identified after the 1st half of the cycle has passed.
