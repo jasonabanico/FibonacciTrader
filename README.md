@@ -26,6 +26,7 @@ A simple app that takes historical price from [CoinAPI](https://docs.coinapi.io/
 ## Strategy (not financial advice)
 
 - Use history to determine the extension level to sell and the retracement level to buy again.
+- From the outputs, it appears that the 0.786 retracement level can be an entry signal, and the 2.618 extension level can be an exit signal.
 
 ## Additional Features
 
