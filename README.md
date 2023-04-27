@@ -19,8 +19,8 @@ A simple app that takes historical price from [CoinAPI](https://docs.coinapi.io/
 - Calculate the start dates of each cycle, and, for each price point, mark the cycle.
 - Identify the cycle tops (highest price) and bottoms (lowest price).
 - Calculate the retracement and extension levels for each cycle.
-  - Retracement: Multiply the upward length (swing high or current cycle top minus swing low or previous cycle bottom) with Fibonacci levels, and subtract it from the current cycle top.
-  - Extension: Multiply the upward length (swing high or current cycle top minus swing low or previous cycle bottom) with Fibonacci levels, and add it to the current cycle bottom.
+  - Retracement: Multiply the upward length (swing high or current cycle top minus swing low or previous cycle bottom) with Fibonacci retracement levels, and subtract it from the current cycle top.
+  - Extension: Multiply the upward length (swing high or current cycle top minus swing low or previous cycle bottom) with Fibonacci extension levels, and add it to the current cycle bottom.
 - Identify when retention and extension crossing occurred for each cycle.
 
 ## Strategy (not financial advice)
