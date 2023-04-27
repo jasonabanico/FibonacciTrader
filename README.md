@@ -4,6 +4,7 @@ A simple app that takes historical price from [CoinAPI](https://docs.coinapi.io/
 
 ## Assumptions
 
+This thesis stands on four pillars: computer science, macroeconomics, market psychology, and math.
 - For simplicity, cycles are approximated to happen every 1400 days, starting from the birth of Bitcoin. This is the [Bitcoin halving](https://www.investopedia.com/bitcoin-halving-4843769) cycle. (Actual halving cycles do not have a fixed number of days.) 
 - It may also be possible that the crypto 4-year cycle is in sync with a 4-year liquidity cycle, starting with the Fed's bailout during the GFC in October, 2008, the event that led Satoshi Nakamoto to create Bitcoin.
 - Alt coins follow Bitcoin's cycle, driven by the [Crypto Money Flow Cycle](https://rektcapital.substack.com/p/crypto-money-flow-cycle).
