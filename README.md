@@ -40,7 +40,7 @@ This thesis stands on four pillars: computer science, macroeconomics, market psy
 
 ## Sample Output
 
-Bitcoin
+- Bitcoin
 
     ----------
     BTC REPORT
@@ -113,13 +113,12 @@ Bitcoin
       Extension level 4.236 is $285,803.70.
         Retracement level 0.236 is $222,073.85.
         Retracement level 0.382 is $182,647.76.
-        Retracement level 0.5 is $150,782.84.
+       Retracement level 0.5 is $150,782.84.
         Retracement level 0.618 is $118,917.92.
         Retracement level 0.786 is $73,550.91.
         Retracement level 1 is $15,761.98.
 
-Ethereum
-
+- Ethereum
 
     ----------
     ETH REPORT
