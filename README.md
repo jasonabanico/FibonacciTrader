@@ -40,8 +40,7 @@ This thesis stands on four pillars: computer science, macroeconomics, market psy
 
 ## Sample Output
 
-- Bitcoin
-
+Bitcoin
 
     ----------
     BTC REPORT
@@ -119,8 +118,7 @@ This thesis stands on four pillars: computer science, macroeconomics, market psy
         Retracement level 0.786 is $73,550.91.
         Retracement level 1 is $15,761.98.
 
-- Ethereum
-
+Ethereum
 
     ----------
     ETH REPORT
